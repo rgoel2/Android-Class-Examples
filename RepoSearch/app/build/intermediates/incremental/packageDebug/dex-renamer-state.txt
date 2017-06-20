@@ -1,0 +1,7 @@
+#Tue Jun 20 14:33:41 PDT 2017
+base.0=/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5e4fac7f1f9370c077910cc819b9b2d4bd31f623
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_683778b48bd4358d6d81f03276382e39a9efc1ff/classes.dex
+base.1=/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_683778b48bd4358d6d81f03276382e39a9efc1ff
+file.0=/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5e4fac7f1f9370c077910cc819b9b2d4bd31f623/classes.dex

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/mark/Desktop/Android Class/inclass/RepoSearch/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]
