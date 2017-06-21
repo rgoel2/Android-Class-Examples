@@ -111,15 +111,8 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(int clickedItemIndex) {
             String url = data.get(clickedItemIndex).getUrl();
             Log.d(TAG, String.format("Url %s", url));
-            openWebPage(url);
+
         }
 
-        public void openWebPage(String url) {
-            Uri webpage = Uri.parse(url);
-            Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            }
-        }
     }
 }
