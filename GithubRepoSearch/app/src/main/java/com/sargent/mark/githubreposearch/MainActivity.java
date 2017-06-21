@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progress;
     private EditText search;
     private RecyclerView rv;
+    public final static String URLKEY = "url";
 
 
     @Override
@@ -65,8 +66,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class NetworkTask extends AsyncTask<URL, Void, ArrayList<Repository>> implements GithubAdapter.ItemClickListener{
-        String query;
-        ArrayList<Repository> data;
+        private String query;
+        private ArrayList<Repository> data;
+
 
         NetworkTask(String s) {
             query = s;
@@ -112,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
             String url = data.get(clickedItemIndex).getUrl();
             Log.d(TAG, String.format("Url %s", url));
 
+            Intent intent = new Intent(MainActivity.this, Web.class);
+            intent.putExtra(URLKEY, url);
+            startActivity(intent);
         }
 
     }
