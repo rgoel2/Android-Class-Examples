@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class GithubAdapter extends RecyclerView.Adapter<GithubAdapter.ItemHolder>{
 
-    private RecyclerView rv;
     private ArrayList<Repository> data;
     ItemClickListener listener;
 
