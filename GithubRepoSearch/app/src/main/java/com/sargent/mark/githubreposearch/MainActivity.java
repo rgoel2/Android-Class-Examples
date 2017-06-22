@@ -64,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    class NetworkTask extends AsyncTask<URL, Void, ArrayList<Repository>> implements GithubAdapter.ItemClickListener{
+    class NetworkTask extends AsyncTask<URL, Void, ArrayList<Repository>>{
         String query;
-        ArrayList<Repository> data;
-
         NetworkTask(String s) {
             query = s;
         }
@@ -96,22 +94,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Repository> data) {
-            this.data = data;
+        protected void onPostExecute(final ArrayList<Repository> data) {
             super.onPostExecute(data);
             progress.setVisibility(View.GONE);
             if (data != null) {
-                GithubAdapter adapter = new GithubAdapter(data, this);
+                GithubAdapter adapter = new GithubAdapter(data, new GithubAdapter.ItemClickListener() {
+                    @Override
+                    public void onItemClick(int clickedItemIndex) {
+                        String url = data.get(clickedItemIndex).getUrl();
+                        Log.d(TAG, String.format("Url %s", url));
+                        openWebPage(url);
+                    }
+                });
                 rv.setAdapter(adapter);
 
             }
-        }
-
-        @Override
-        public void onItemClick(int clickedItemIndex) {
-            String url = data.get(clickedItemIndex).getUrl();
-            Log.d(TAG, String.format("Url %s", url));
-            openWebPage(url);
         }
 
         public void openWebPage(String url) {
