@@ -79,34 +79,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-<<<<<<< HEAD
-    class NetworkTask extends AsyncTask<URL, Void, ArrayList<Repository>> {
-        String query;
 
-        NetworkTask(String s) {
-            query = s;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progress.setVisibility(View.VISIBLE);
-
-        }
-
-        @Override
-        protected ArrayList<Repository> doInBackground(URL... params) {
-            ArrayList<Repository> result = null;
-            URL url = NetworkUtils.makeURL(query, "stars");
-            Log.d(TAG, "url: " + url.toString());
-            try {
-                String json = NetworkUtils.getResponseFromHttpUrl(url);
-                result = NetworkUtils.parseJSON(json);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-=======
     @Override
     public Loader<ArrayList<Repository>> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<ArrayList<Repository>>(this) {
@@ -116,26 +89,10 @@ public class MainActivity extends AppCompatActivity
                 super.onStartLoading();
                 if(args == null) return;
                 progress.setVisibility(View.VISIBLE);
->>>>>>> 118dc4890801290979a897ea0770a036c802364b
-            }
-
-<<<<<<< HEAD
-        @Override
-        protected void onPostExecute(final ArrayList<Repository> data) {
-            super.onPostExecute(data);
-            progress.setVisibility(View.GONE);
-            if (data != null) {
-                GithubAdapter adapter = new GithubAdapter(data, new GithubAdapter.ItemClickListener() {
-                    @Override
-                    public void onItemClick(int clickedItemIndex) {
-                        String url = data.get(clickedItemIndex).getUrl();
-                        Log.d(TAG, String.format("Url %s", url));
-                    }
-                });
-                rv.setAdapter(adapter);
 
             }
-=======
+
+
             @Override
             public ArrayList<Repository> loadInBackground() {
                 String query = args.getString(SEARCH_QUERY_EXTRA);
@@ -177,65 +134,10 @@ public class MainActivity extends AppCompatActivity
                 }
             });
             rv.setAdapter(adapter);
->>>>>>> 118dc4890801290979a897ea0770a036c802364b
         }
     }
 
     @Override
     public void onLoaderReset(Loader<ArrayList<Repository>> loader) {}
 
-
-    ///The old AsyncTask: we are not using it now, kept for reference
-//    class NetworkTask extends AsyncTask<URL, Void, ArrayList<Repository>>{
-//        private String query;
-//
-//        NetworkTask(String s) {
-//            query = s;
-//        }
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            progress.setVisibility(View.VISIBLE);
-//
-//        }
-//
-//        @Override
-//        protected ArrayList<Repository> doInBackground(URL... params) {
-//            ArrayList<Repository> result = null;
-//            URL url = NetworkUtils.makeURL(query, "stars");
-//            Log.d(TAG, "url: " + url.toString());
-//            try {
-//                String json = NetworkUtils.getResponseFromHttpUrl(url);
-//                result = NetworkUtils.parseJSON(json);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            return result;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(final ArrayList<Repository> data) {
-//            super.onPostExecute(data);
-//            progress.setVisibility(View.GONE);
-//            if (data != null) {
-//                GithubAdapter adapter = new GithubAdapter(data, new GithubAdapter.ItemClickListener() {
-//                    @Override
-//                    public void onItemClick(int clickedItemIndex) {
-//                        String url = data.get(clickedItemIndex).getUrl();
-//                        Log.d(TAG, String.format("Url %s", url));
-//
-//                        Intent intent = new Intent(MainActivity.this, Web.class);
-//                        intent.putExtra(URLKEY, url);
-//                        startActivity(intent);
-//                    }
-//                });
-//                rv.setAdapter(adapter);
-//
-//            }
-//        }
-//
-//    }
 }
