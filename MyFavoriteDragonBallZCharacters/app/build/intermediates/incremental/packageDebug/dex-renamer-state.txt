@@ -1,0 +1,7 @@
+#Mon Jul 03 14:13:38 PDT 2017
+base.0=/Users/mark/Desktop/MyFavoriteDragonBallZCharacters/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1df011c6bf5af2cf5bd86a29bb05cf0b430a08b5
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/mark/Desktop/MyFavoriteDragonBallZCharacters/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9d09ca628d18138ef937df685994b3fbb3e3e500/classes.dex
+base.1=/Users/mark/Desktop/MyFavoriteDragonBallZCharacters/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9d09ca628d18138ef937df685994b3fbb3e3e500
+file.0=/Users/mark/Desktop/MyFavoriteDragonBallZCharacters/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1df011c6bf5af2cf5bd86a29bb05cf0b430a08b5/classes.dex
