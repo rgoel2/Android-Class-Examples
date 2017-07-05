@@ -39,7 +39,6 @@ public class AddToDoFragment extends DialogFragment{
         dp = (DatePicker) view.findViewById(R.id.datePicker);
         add = (Button) view.findViewById(R.id.add);
 
-        // Create a new instance of DatePickerDialog and return it
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
@@ -56,11 +55,8 @@ public class AddToDoFragment extends DialogFragment{
             }
         });
 
-
         return view;
-
     }
-
 }
 
 

@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.sargent.mark.todolist.data.Contract;
 import com.sargent.mark.todolist.data.DBHelper;
 
-public class MainActivity extends AppCompatActivity implements AddToDoFragment.OnDialogCloseListener {
+public class MainActivity extends AppCompatActivity implements AddToDoFragment.OnDialogCloseListener, UpdateToDoFragment.OnUpdateDialogCloseListener{
 
     private RecyclerView rv;
     private Button button;
@@ -44,13 +44,11 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         });
         rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
         if (db != null) db.close();
         if (cursor != null) cursor.close();
     }
@@ -64,9 +62,19 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         cursor = getAllItems(db);
 
         adapter = new ToDoListAdapter(cursor, new ToDoListAdapter.ItemClickListener() {
+
             @Override
-            public void onItemClick(int pos) {
-                Toast.makeText(MainActivity.this, String.format("item %d clicked", pos), Toast.LENGTH_SHORT).show();
+            public void onItemClick(int pos, String description, String duedate, long id) {
+                Log.d(TAG, "item click id: " + id);
+                String[] dateInfo = duedate.split("-");
+                int year = Integer.parseInt(dateInfo[0].replaceAll("\\s",""));
+                int month = Integer.parseInt(dateInfo[1].replaceAll("\\s",""));
+                int day = Integer.parseInt(dateInfo[2].replaceAll("\\s",""));
+
+                FragmentManager fm = getSupportFragmentManager();
+
+                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, id);
+                frag.show(fm, "updatetodofragment");
             }
         });
 
@@ -97,11 +105,12 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
     public String formatDate(int year, int month, int day) {
-        return String.format("%4d-%2d-%2d", year, month, day);
+        return String.format("%d-%d-%d", year, month, day);
     }
 
+
+
     private Cursor getAllItems(SQLiteDatabase db) {
-        boolean fool = 1 == 1;
         return db.query(
                 Contract.TABLE_TODO.TABLE_NAME,
                 null,
@@ -123,5 +132,23 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     private boolean removeToDo(SQLiteDatabase db, long id) {
         Log.d(TAG, "deleting id: " + id);
         return db.delete(Contract.TABLE_TODO.TABLE_NAME, Contract.TABLE_TODO._ID + "=" + id, null) > 0;
+    }
+
+
+    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, long id){
+
+        String duedate = formatDate(year, month, day);
+
+        ContentValues cv = new ContentValues();
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
+
+        return db.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
+    }
+
+    @Override
+    public void closeUpdateDialog(int year, int month, int day, String description, long id) {
+        updateToDo(db, year, month, day, description, id);
+        adapter.swapCursor(getAllItems(db));
     }
 }
