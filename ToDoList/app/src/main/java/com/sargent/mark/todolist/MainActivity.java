@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import com.sargent.mark.todolist.data.DBHelper;
 public class MainActivity extends AppCompatActivity implements AddToDoFragment.OnDialogCloseListener, UpdateToDoFragment.OnUpdateDialogCloseListener{
 
     private RecyclerView rv;
-    private Button button;
+    private FloatingActionButton button;
     private DBHelper helper;
     private Cursor cursor;
     private SQLiteDatabase db;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "oncreate called in main activity");
-        button = (Button) findViewById(R.id.addToDo);
+        button = (FloatingActionButton) findViewById(R.id.addToDo);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

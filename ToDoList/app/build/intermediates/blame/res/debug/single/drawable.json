@@ -52,6 +52,10 @@
         "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
+        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/navigation_empty_icon.xml",
+        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable/navigation_empty_icon.xml"
+    },
+    {
         "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
         "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/drawable/abc_tab_indicator_material.xml"
     },
@@ -62,6 +66,10 @@
     {
         "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
         "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/design_bottom_navigation_item_background.xml",
+        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable/design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
@@ -128,6 +136,10 @@
         "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/drawable/abc_edit_text_material.xml"
     },
     {
+        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
+        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable/design_snackbar_background.xml"
+    },
+    {
         "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/abc_btn_colored_material.xml",
         "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/drawable/abc_btn_colored_material.xml"
     },
@@ -138,6 +150,14 @@
     {
         "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",
         "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/drawable/abc_vector_test.xml"
+    },
+    {
+        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/design_password_eye.xml",
+        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
+        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable/design_fab_background.xml"
     },
     {
         "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",

@@ -64,7 +64,7 @@ public class UpdateToDoFragment extends DialogFragment {
 
         toDo.setText(description);
 
-
+        add.setText("Update");
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

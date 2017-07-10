@@ -15,11 +15,12 @@
         android:layout_height="0dip"
         android:layout_weight=".90" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/addToDo"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight=".10"
-        android:text="Add Item" />
+        android:text="Add Item"
+        android:src="@drawable/ic_add_black_48dp"/>
 
 </LinearLayout>
