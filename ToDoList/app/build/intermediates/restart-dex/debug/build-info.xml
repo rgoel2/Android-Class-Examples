@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
-    api-level="24"
+    abi="x86_64,x86"
+    api-level="22"
     build-mode="FULL"
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1499717146916"
+    timestamp="1499896062624"
     token="1915980886971871692"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="949" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="24" />
+        duration="808" />
     <task
         name="verifier"
-        duration="3" />
+        duration="0" />
 
     <artifact
         location="/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
@@ -62,7 +62,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1499717146916"
+        timestamp="1499896062624"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/split-apk/debug/slices/slice_8.apk"

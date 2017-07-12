@@ -13,8 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.sargent.mark.todolist.data.Contract;
 import com.sargent.mark.todolist.data.DBHelper;
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
     public String formatDate(int year, int month, int day) {
-        return String.format("%d-%d-%d", year, month, day);
+        return String.format("%04d-%02d-%02d", year, month + 1, day);
     }
 
 
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
     private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, long id){
 
-        String duedate = formatDate(year, month, day);
+        String duedate = formatDate(year, month - 1, day);
 
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
