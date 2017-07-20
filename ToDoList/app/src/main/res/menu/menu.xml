@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--New menu to filter to-dos based on category -->
+    <!-- Spinner as actionViewClass: suggestion from stackoverflow.com -->
+    <item
+        android:id="@+id/categoryMenuItem"
+        android:title="Menu"
+        app:actionViewClass="android.widget.Spinner"
+        app:showAsAction="always"
+        tools:context=".MainActivity">
+    </item>
+</menu>

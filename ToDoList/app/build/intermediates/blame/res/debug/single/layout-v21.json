@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_action_tombstone.xml"
+        "merged": "/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/rohangoel/.android/build-cache/9b8851c3956ce93210486605d9a218d6041290bb/output/res/layout-v21/notification_template_custom_big.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_template_custom_big.xml"
+        "merged": "/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/rohangoel/.android/build-cache/9b8851c3956ce93210486605d9a218d6041290bb/output/res/layout-v21/notification_action_tombstone.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_template_icon_group.xml"
+        "merged": "/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/rohangoel/.android/build-cache/9b8851c3956ce93210486605d9a218d6041290bb/output/res/layout-v21/notification_action.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_action.xml"
+        "merged": "/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/rohangoel/.android/build-cache/9b8851c3956ce93210486605d9a218d6041290bb/output/res/layout-v21/notification_template_icon_group.xml"
     }
 ]

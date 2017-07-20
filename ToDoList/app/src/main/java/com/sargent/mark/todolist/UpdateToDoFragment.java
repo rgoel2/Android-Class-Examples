@@ -24,7 +24,6 @@ public class UpdateToDoFragment extends DialogFragment {
     private final String TAG = "updatetodofragment";
     private long id;
 
-
     public UpdateToDoFragment(){}
 
     public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id) {
@@ -45,7 +44,7 @@ public class UpdateToDoFragment extends DialogFragment {
 
     //To have a way for the activity to get the data from the dialog
     public interface OnUpdateDialogCloseListener {
-        void closeUpdateDialog(int year, int month, int day, String description, long id);
+        void closeUpdateDialog(int year, int month, int day, String description, String type, long id);
     }
 
     @Override
@@ -61,7 +60,7 @@ public class UpdateToDoFragment extends DialogFragment {
         id = getArguments().getLong("id");
         String description = getArguments().getString("description");
         dp.updateDate(year, month, day);
-
+        final String type = getArguments().getString("type");
         toDo.setText(description);
 
         add.setText("Update");
@@ -70,7 +69,7 @@ public class UpdateToDoFragment extends DialogFragment {
             public void onClick(View v) {
                 UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                 Log.d(TAG, "id: " + id);
-                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id);
+                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), type ,id);
                 UpdateToDoFragment.this.dismiss();
             }
         });

@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
-        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+        "merged": "/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/rohangoel/.android/build-cache/f04a5176eb1e07152112bdfc149d0d6f1ab74d8e/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
-        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+        "merged": "/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/rohangoel/.android/build-cache/f04a5176eb1e07152112bdfc149d0d6f1ab74d8e/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
     }
 ]

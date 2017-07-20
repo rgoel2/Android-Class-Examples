@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ToDoList</string>
+
+    <string-array name="value_array">
+        <item>Default</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>saturday</item>
+        <item>Sunday</item>
+    </string-array>
 </resources>

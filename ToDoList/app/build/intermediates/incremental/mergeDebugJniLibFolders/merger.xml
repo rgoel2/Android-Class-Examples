@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/src/debug/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/rohangoel/Study Material/Cal State LA/summer17/CS-5540 Android/Repo/Android-Class-Examples/ToDoList/app/src/debug/jniLibs"/></dataSet></merger>

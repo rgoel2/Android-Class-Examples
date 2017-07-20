@@ -45,7 +45,6 @@ public class AddToDoFragment extends DialogFragment{
         int day = c.get(Calendar.DAY_OF_MONTH);
         dp.updateDate(year, month, day);
 
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +57,3 @@ public class AddToDoFragment extends DialogFragment{
         return view;
     }
 }
-
-
-

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sargent.mark.todolist.data.Contract;
 import com.sargent.mark.todolist.data.ToDoItem;
@@ -46,7 +47,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     }
 
     public interface ItemClickListener {
-        void onItemClick(int pos, String description, String duedate, long id);
+        void onItemClick(int pos, String description, String duedate, String type, long id);
+        void onItemClick(int pos , long id, boolean isDone);
     }
 
     public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
@@ -71,6 +73,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         long id;
 
 
+        // Adding two columnn fields
+        String type;
+        boolean isDone;
+        TextView categoryToDo;
+
         ItemHolder(View view) {
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
@@ -87,14 +94,22 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
             descr.setText(description);
             due.setText(duedate);
+
+            // Getting the checkbox value and display type of To Do
+            isDone = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DONE))==1;
+            type = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_TYPE));
+            categoryToDo.setText(type);
+
             holder.itemView.setTag(id);
         }
 
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            listener.onItemClick(pos, description, duedate, id);
+            listener.onItemClick(pos, description, duedate,type, id);
+
         }
+
     }
 
 }
