@@ -1,19 +1,20 @@
 package com.sargent.mark.todolist;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sargent.mark.todolist.data.Contract;
-import com.sargent.mark.todolist.data.ToDoItem;
-
-import java.util.ArrayList;
 
 /**
  * Created by mark on 7/4/17.
@@ -23,7 +24,10 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
     private Cursor cursor;
     private ItemClickListener listener;
+    SQLiteDatabase sq;
+
     private String TAG = "todolistadapter";
+    SQLiteOpenHelper db;
 
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,13 +51,14 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     }
 
     public interface ItemClickListener {
-        void onItemClick(int pos, String description, String duedate, String type, long id);
-        void onItemClick(int pos , long id, boolean isDone);
+        void onItemClick(int pos, String description, String duedate, String category, long id);
+        void onItemClick(int pos , long id, boolean done);
     }
 
-    public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
+    public ToDoListAdapter(Cursor cursor, ItemClickListener listener, SQLiteDatabase sq) {
         this.cursor = cursor;
         this.listener = listener;
+        this.sq=sq;
     }
 
     public void swapCursor(Cursor newCursor){
@@ -70,18 +75,23 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         TextView due;
         String duedate;
         String description;
+        CheckBox chk;
         long id;
 
-
-        // Adding two columnn fields
-        String type;
-        boolean isDone;
+        // Adding two field for columns done and category
+        String Category;
+        boolean Done1;
         TextView categoryToDo;
+
+
 
         ItemHolder(View view) {
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+            categoryToDo=(TextView) view.findViewById(R.id.categoryToDo);
+            chk = (CheckBox) view.findViewById(R.id.check1);
+
             view.setOnClickListener(this);
         }
 
@@ -89,26 +99,36 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             cursor.moveToPosition(pos);
             id = cursor.getLong(cursor.getColumnIndex(Contract.TABLE_TODO._ID));
             Log.d(TAG, "deleting id: " + id);
-
+            chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    ContentValues cv = new ContentValues();
+                    cv.put(Contract.TABLE_TODO.COLUMN_NAME_DONE, isChecked);
+                    sq.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
+                }
+            });
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
             descr.setText(description);
             due.setText(duedate);
+            chk.setChecked(cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DONE))>0?true:false);
 
-            // Getting the checkbox value and display type of To Do
-            isDone = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DONE))==1;
-            type = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_TYPE));
-            categoryToDo.setText(type);
-
+            // Getting the value from checkbox and displaying category
+            Done1 = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DONE))==1;
+            Category = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_TYPE));
+            categoryToDo.setText(Category);
             holder.itemView.setTag(id);
+
         }
 
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            listener.onItemClick(pos, description, duedate,type, id);
-
+            listener.onItemClick(pos, description, duedate,Category, id);
         }
+
+
+
 
     }
 

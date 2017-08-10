@@ -3,12 +3,12 @@ package com.sargent.mark.todolist;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -19,10 +19,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
 import com.sargent.mark.todolist.data.Contract;
 import com.sargent.mark.todolist.data.DBHelper;
 
-public class MainActivity extends AppCompatActivity implements AddToDoFragment.OnDialogCloseListener, UpdateToDoFragment.OnUpdateDialogCloseListener, AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements AddToDoFragment.OnDialogCloseListener, UpdateToDoFragment.OnUpdateDialogCloseListener,AdapterView.OnItemSelectedListener{
 
     private RecyclerView rv;
     private FloatingActionButton button;
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         });
         rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+
     }
 
     @Override
@@ -67,31 +72,32 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
         adapter = new ToDoListAdapter(cursor, new ToDoListAdapter.ItemClickListener() {
 
-                @Override
-                public void onItemClick(int pos, String description, String duedate, String type, long id)
-                {
-                    Log.d(TAG, "item click id: " + id);
-                    String[] dateInfo = duedate.split("-");
-                    int year = Integer.parseInt(dateInfo[0].replaceAll("\\s", ""));
-                    int month = Integer.parseInt(dateInfo[1].replaceAll("\\s", ""));
-                    int day = Integer.parseInt(dateInfo[2].replaceAll("\\s", ""));
+            @Override
+            public void onItemClick(int pos, String description, String duedate,String category, long id) {
+                Log.d(TAG, "item click id: " + id);
+                String[] dateInfo = duedate.split("-");
+                int year = Integer.parseInt(dateInfo[0].replaceAll("\\s",""));
+                int month = Integer.parseInt(dateInfo[1].replaceAll("\\s",""));
+                int day = Integer.parseInt(dateInfo[2].replaceAll("\\s",""));
 
-                    FragmentManager fm = getSupportFragmentManager();
+                FragmentManager fm = getSupportFragmentManager();
 
-                    UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, id);
-                    frag.show(fm, "updatetodofragment");
-                }
+                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, id);
+                frag.show(fm, "updatetodofragment");
+            }
 
-                // update database with checkbox value
+            // update database with value that checkbox has
 
-                @Override
-                public void onItemClick(int pos, long id, boolean done) {
-                    Log.d("TAG" ,""+id );
-                    ContentValues c = new ContentValues();
-                    c.put(Contract.TABLE_TODO.COLUMN_NAME_DONE, (done ? 1:0));
-                    db.update(Contract.TABLE_TODO.TABLE_NAME, c, Contract.TABLE_TODO._ID + "=" +id , null);
-                }
-        });
+            @Override
+            public void onItemClick(int pos, long id, boolean done) {
+                Log.d("TAG" ,""+id );
+                ContentValues c = new ContentValues();
+                c.put(Contract.TABLE_TODO.COLUMN_NAME_DONE, (done ? 1:0));
+                db.update(Contract.TABLE_TODO.TABLE_NAME, c, Contract.TABLE_TODO._ID + "=" +id , null);
+            }
+
+
+        },db);
 
         rv.setAdapter(adapter);
 
@@ -113,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
     @Override
-    public void closeDialog(int year, int month, int day, String description) {
-        addToDo(db, description, formatDate(year, month, day));
+    public void closeDialog(int year, int month, int day, String description, String category) {
+        addToDo(db, description, formatDate(year, month, day), category);
         cursor = getAllItems(db);
         adapter.swapCursor(cursor);
     }
@@ -122,6 +128,8 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     public String formatDate(int year, int month, int day) {
         return String.format("%04d-%02d-%02d", year, month + 1, day);
     }
+
+
 
     private Cursor getAllItems(SQLiteDatabase db) {
         return db.query(
@@ -135,10 +143,13 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         );
     }
 
-    private long addToDo(SQLiteDatabase db, String description, String duedate) {
+    private long addToDo(SQLiteDatabase db, String description, String duedate, String category) {
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
+        // Inserting values of category into column of database table where column name is Category
+
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_TYPE, category);
         return db.insert(Contract.TABLE_TODO.TABLE_NAME, null, cv);
     }
 
@@ -148,25 +159,29 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
-    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, String type,long id){
+    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, String category, long id){
 
         String duedate = formatDate(year, month - 1, day);
 
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
+        // Updating values of category into column of database table where column name is Category
 
-        // Update type of To Do in database
-        cv.put(Contract.TABLE_TODO.COLUMN_NAME_TYPE, type);
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_TYPE, category);
+
+
 
         return db.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
     }
 
     @Override
-    public void closeUpdateDialog(int year, int month, int day, String description,String type, long id) {
-        updateToDo(db, year, month, day, description, type, id);
+    public void closeUpdateDialog(int year, int month, int day, String description,String category , long id ) {
+        updateToDo(db, year, month, day, description,category, id);
         adapter.swapCursor(getAllItems(db));
     }
+
+
 
     //Inflate  menu items
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -207,4 +222,15 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
                 Contract.TABLE_TODO.COLUMN_NAME_TYPE + "='" + category + "'",
                 null, null, null, Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE);
     }
+
+
+
+
 }
+
+
+
+
+
+
+
